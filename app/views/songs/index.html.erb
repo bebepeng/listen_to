@@ -1,0 +1,8 @@
+Songs List
+
+<% @songs.each do |song| %>
+  <%= song.title %>
+
+<% end %>
+
+<%= link_to 'Add Song', new_song_path %>
