@@ -1,0 +1,28 @@
+<%= form_for @song do |f| %>
+
+  <!--<% if @song.errors.present? %>-->
+    <!--<% @song.errors.full_messages.each do |message| %>-->
+      <!--<p><%= message %></p>-->
+      <!--<% end %>-->
+    <!--<br>/\-->
+    <!--<% end %>-->
+
+  <table>
+    <tr>
+      <td><%= f.label :title %></td>
+      <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :artist %></td>
+      <td><%= f.text_field :artist %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :url %></td>
+      <td><%= f.text_field :url %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit %></td>
+    </tr>
+  </table>
+<% end %>
