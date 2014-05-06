@@ -1,8 +1,17 @@
 Songs List
+<table>
+  <th>
+    <td>Title</td>
+    <td>Artist</td>
+    <td>YouTube URL</td>
+  </th>
+  <% @songs.each do |song| %>
+    <tr>
+      <td><%= song.title %></td>
+      <td><%= song.artist %></td>
+      <td><a href='<%= song.url %>'>Listen here</a></td>
+    </tr>
+  <% end %>
+</table>
 
-<% @songs.each do |song| %>
-  <%= song.title %>
-
-<% end %>
-
-<%= link_to 'Add Song', new_song_path %>
+<%= link_to 'Add a New Song', new_song_path %>

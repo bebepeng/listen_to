@@ -25,4 +25,4 @@ en:
   activerecord:
     attributes:
       song:
-        url: "Youtube Url"
+        url: "YouTube URL"
