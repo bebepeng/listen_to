@@ -11,6 +11,9 @@ Setup Instructions
 1. Run Specs `rake spec`
 1. Run Local Server `rails s`
 
+On Heroku
+1. `heroku run 'rake db:migrate' -a HEROKUAPP`
+
 Admins
 ======
 *
@@ -18,7 +21,7 @@ Admins
 URLs
 ====
 * PivotalTracker - [https://www.pivotaltracker.com/n/projects/1072574](https://www.pivotaltracker.com/n/projects/1072574)
-* Running Site -
+* Running Site - [http://calm-basin-9174.herokuapp.com/](http://calm-basin-9174.herokuapp.com/)
 
 
 [![Code Climate](https://codeclimate.com/github/bebepeng/listen_to.png)](https://codeclimate.com/github/bebepeng/listen_to)
