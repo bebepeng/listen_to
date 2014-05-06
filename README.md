@@ -1,5 +1,6 @@
-Listen to What Bebe Listens to - RAILS
+Listen to - RAILS
 ======================================
+Listen to what Bebe listens to! This is an app that displays music that I enjoy listening to
 
 Setup Instructions
 ==================
@@ -18,3 +19,6 @@ URLs
 ====
 * PivotalTracker - [https://www.pivotaltracker.com/n/projects/1072574](https://www.pivotaltracker.com/n/projects/1072574)
 * Running Site -
+
+
+[![Code Climate](https://codeclimate.com/github/bebepeng/listen_to.png)](https://codeclimate.com/github/bebepeng/listen_to)
