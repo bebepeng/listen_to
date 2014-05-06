@@ -6,6 +6,7 @@ Songs List
       <td>Artist</td>
       <td>YouTube URL</td>
       <td></td>
+      <td></td>
     </tr>
   </th>
   <% @songs.each do |song| %>
@@ -14,6 +15,7 @@ Songs List
       <td><%= song.artist %></td>
       <td><a href='<%= song.url %>'>Listen here</a></td>
       <td><%= link_to "Edit Song", edit_song_path(song) %></td>
+      <td><%= button_to "Delete Song", song_path(song), method: :delete, data: {confirm: "Are you sure?"} %></td>
     </tr>
   <% end %>
 </table>
