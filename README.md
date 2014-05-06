@@ -12,6 +12,7 @@ Setup Instructions
 1. Run Local Server `rails s`
 
 On Heroku
+---------
 1. `heroku run 'rake db:migrate' -a HEROKUAPP`
 
 Admins
