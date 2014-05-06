@@ -1,5 +1,13 @@
 <h1>Welcome! :D</h1>
 <hr><br>
 
+<%= link_to 'Sign Up', new_user_path %>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user[:username] %>'s page</li>
+  <% end %>
+</ul>
+
 <h3>Listen to what Bebe Listens to.</h3>
 <a href="/songs">Click here for more.</a>

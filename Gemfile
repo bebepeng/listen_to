@@ -43,3 +43,4 @@ group :test, :development do
   gem 'capybara', '~> 2.2.1'
 end
 
+gem 'bcrypt', '~> 3.1.7'
