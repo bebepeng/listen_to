@@ -1,7 +1,11 @@
-<h1>Welcome! :D</h1>
+<h1>Welcome<% if @user %>, <%= @user.username.capitalize %><% end %>! :D</h1>
 <hr><br>
 
-<%= link_to 'Sign Up', new_user_path %>
+<% if @user %>
+  <a href='/logout'>Log Out </a>
+<% else %>
+  <%= link_to 'Sign Up', new_user_path %>
+<% end %>
 
 <ul>
   <% @users.each do |user| %>
