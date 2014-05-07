@@ -26,3 +26,4 @@ URLs
 
 
 [![Code Climate](https://codeclimate.com/github/bebepeng/listen_to.png)](https://codeclimate.com/github/bebepeng/listen_to)
+[![Build Status](https://travis-ci.org/bebepeng/listen_to.svg?branch=master)](https://travis-ci.org/bebepeng/listen_to)
