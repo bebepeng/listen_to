@@ -3,3 +3,5 @@ rvm:
  - 2.1.1
 script:
  - RAILS_ENV=test bundle exec rake --trace db:create db:migrate
+notifications:
+  email: false
