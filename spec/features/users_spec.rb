@@ -14,7 +14,7 @@ feature 'Users' do
   end
 
   scenario 'users see errors when they fail' do
-    User.create!(:username => 'Bebe', :password => 'bebe')
+    create_valid_user
 
     visit '/'
     click_on 'Sign Up'
@@ -40,4 +40,8 @@ feature 'Users' do
 
   scenario 'users can login'
   scenario 'users can delete their accounts'
+
+  def create_valid_user
+    User.create!(:username => 'Bebe', :password => 'password')
+  end
 end
