@@ -10,7 +10,7 @@
 <header>
   <div id="right_header">
     <% if session[:user_id] %>
-      Hi, <%= @user.username.capitalize %>!
+      Hi, <%= User.find(session[:user_id]).username.capitalize %>!
       <%= link_to 'Log Out', logout_path %>
     <% elsif current_page?(login_path) || current_page?(new_user_path) %>
     <% else %>
