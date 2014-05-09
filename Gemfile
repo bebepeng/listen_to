@@ -44,3 +44,7 @@ group :test, :development do
 end
 
 gem 'bcrypt', '~> 3.1.7'
+
+group :production do
+  gem 'rails_12factor', '~> 0.0.2'
+end
