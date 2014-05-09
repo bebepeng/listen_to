@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe User do
   describe 'validation' do
+    it 'requires a unique email' do
+      create_valid_user
+      user = User.new(:email => 'bebe@email.com')
+      user.valid?
+
+      expect(user.errors[:email].length).to eq 1
+    end
+
     it 'requires a unique username' do
       create_valid_user
       user = User.new(:username => 'Bebe')
@@ -32,14 +40,14 @@ describe User do
   end
 
   describe 'finder' do
-    it 'finds the user regarless of username case' do
+    it 'finds the user regarless of email case' do
       create_valid_user
 
-      expect(User.find_by_case_insensitive_username('bebe').username).to eq 'Bebe'
+      expect(User.find_by_case_insensitive_email('Bebe@email.com').email).to eq 'bebe@email.com'
     end
   end
 
   def create_valid_user
-    User.create!(:username => 'Bebe', :password => 'password')
+    User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
   end
 end

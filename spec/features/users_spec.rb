@@ -5,6 +5,7 @@ feature 'Users' do
   scenario 'users can Register' do
     visit '/'
     click_on 'Register'
+    fill_in 'Email', :with => 'bebe@email.com'
     fill_in 'Username', :with => 'Bebe'
     fill_in 'Password', :with => 'password'
     click_on 'Register'
@@ -18,16 +19,18 @@ feature 'Users' do
 
     visit '/'
     click_on 'Register'
+    fill_in 'Email', :with => 'bebe@email.com'
     fill_in 'Username', :with => 'Bebe'
     fill_in 'Password', :with => 'password'
     click_on 'Register'
 
     expect(page).to have_content "Username has already been taken"
+    expect(page).to have_content "Email has already been taken"
   end
 
   scenario 'users can delete their accounts'
 
   def create_valid_user
-    User.create!(:username => 'Bebe', :password => 'password')
+    User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
   end
 end

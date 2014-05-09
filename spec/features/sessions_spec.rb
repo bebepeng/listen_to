@@ -4,6 +4,7 @@ feature 'User Sessions' do
   scenario 'users can log out' do
     visit '/'
     click_on 'Register'
+    fill_in 'Email', :with => 'bebe@email.com'
     fill_in 'Username', :with => 'Bebe'
     fill_in 'Password', :with => 'password'
     click_on 'Register'
@@ -19,7 +20,7 @@ feature 'User Sessions' do
 
     visit '/'
     click_on 'Log In'
-    fill_in 'Username', :with => 'Bebe'
+    fill_in 'Email', :with => 'bebe@email.com'
     fill_in 'Password', :with => 'password'
     click_on 'Log In'
 
@@ -32,7 +33,7 @@ feature 'User Sessions' do
 
     visit '/'
     click_on 'Log In'
-    fill_in 'Username', :with => 'Bebe'
+    fill_in 'Email', :with => 'bebe@email.com'
     fill_in 'Password', :with => 'stuffthatisstuff'
     click_on 'Log In'
 
@@ -45,7 +46,7 @@ feature 'User Sessions' do
 
     visit '/'
     click_on 'Log In'
-    fill_in 'Username', :with => 'stuff'
+    fill_in 'Email', :with => 'stuff@stuff.com'
     fill_in 'Password', :with => 'stuffthatisstuff'
     click_on 'Log In'
 
@@ -54,6 +55,6 @@ feature 'User Sessions' do
   end
 
   def create_valid_user
-    User.create!(:username => 'Bebe', :password => 'password')
+    User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
   end
 end

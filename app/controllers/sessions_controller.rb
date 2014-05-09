@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_case_insensitive_username(params[:user][:username])
+    user = User.find_by_case_insensitive_email(params[:user][:email])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
       redirect_to root_path
@@ -26,6 +26,6 @@ class SessionsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:email, :username, :password)
   end
 end
