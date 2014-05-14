@@ -1,5 +1,6 @@
 
 class User < ActiveRecord::Base
+  has_many :songs, :dependent => :destroy
 
   validates :email, :presence => true
   validates_uniqueness_of :username, :case_sensitive => false
