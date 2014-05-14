@@ -10,7 +10,9 @@
 <header>
   <div id="right_header">
     <% if session[:user_id] %>
-      Hi, <%= User.find(session[:user_id]).username.capitalize %>!
+      <% user = User.find(session[:user_id]) %>
+      Hi, <%= user.username.capitalize %>!
+      <%= link_to(image_tag(image_path('settings_wrench.png')), user_path(user), :id => 'settings') %>
       <%= link_to 'Log Out', logout_path %>
     <% elsif current_page?(login_path) || current_page?(new_user_path) %>
     <% else %>

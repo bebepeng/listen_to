@@ -17,3 +17,7 @@
 #right_header {
     text-align: right;
 }
+
+header img {
+    height: 14px;
+}

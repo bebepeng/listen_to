@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  log_in: "Log In"
 
   activerecord:
     attributes:
@@ -31,3 +31,4 @@ en:
     submit:
       user:
         create: "Register"
+        update: "Save Changes"
