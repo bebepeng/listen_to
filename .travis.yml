@@ -1,7 +1,18 @@
 language: ruby
 rvm:
- - 2.1.1
+- 2.1.1
+before_script:
+- cp config/databae.yml.travis config/database.yml
+- bundle exec rake db:create
+- bundle exec rake db:migrate
 script:
- - RAILS_ENV=test bundle exec rake --trace db:create db:migrate
+- RAILS_ENV=test bundle exec rake
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: YqQ2HUX6LPIuCs48s5wggPQcKk5AwOKilotN4uEqcTUqRyO5kbfDmR5j2slcWyEI9nvN8BjyJpCnYumRXBGlaX6FIHFPH0VlllkrrBfMSV5JpmqGDALOh/M1E+7h8+7h3+JtHEV1Tu317tygVcoawvEOoooEDpTJPZMsHCwkTuU=
+  app: calm-basin-9174
+  on:
+    repo: bebepeng/listen_to
