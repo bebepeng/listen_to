@@ -16,3 +16,5 @@ deploy:
   app: calm-basin-9174
   on:
     repo: bebepeng/listen_to
+  run:
+      - "bundle exec rake db:migrate"
