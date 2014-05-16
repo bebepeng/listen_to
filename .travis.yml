@@ -7,8 +7,6 @@ before_script:
 - bundle exec rake db:migrate
 script:
 - bundle exec rake spec
-notifications:
-  email: false
 deploy:
   provider: heroku
   api_key:
@@ -18,3 +16,5 @@ deploy:
     repo: bebepeng/listen_to
   run:
       - "bundle exec rake db:migrate"
+notifications:
+  email: false
