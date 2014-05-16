@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  helper_method :user
+
   def index
     @songs = songs
   end
@@ -17,11 +19,11 @@ class SongsController < ApplicationController
   end
 
   def edit
-    @song = Song.find(params[:id])
+    @song = songs.find(params[:id])
   end
 
   def update
-    @song = Song.find(params[:id])
+    @song = songs.find(params[:id])
     @song.update(song_params)
     if @song.save
       redirect_to songs_path
@@ -31,7 +33,7 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    Song.destroy(params[:id])
+    songs.find(params[:id]).destroy
     redirect_to songs_path
   end
 
@@ -39,6 +41,14 @@ class SongsController < ApplicationController
 
   def songs
     @_songs ||= Song.all
+  end
+
+  def songs_path
+    user_songs_path(user)
+  end
+
+  def user
+    @_user ||= User.find(params[:user_id])
   end
 
   def song_params

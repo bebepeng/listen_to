@@ -2,12 +2,11 @@
 <hr><br>
 
 Listen to What Our Users Listen to.
-<%= link_to 'Click here for more.', songs_path %>
 
 <ul>
   <% @users.each do |user| %>
     <li>Listen to What <%= user.username %> Listens to.</li>
-    <%= link_to 'Click here for more.', songs_path %>
+    <%= link_to 'Click here for more.', [user, :songs] %>
   <% end %>
 </ul>
 

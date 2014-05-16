@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
 
-  resources :users
-  resources :songs
+  resources :users do
+    resources :songs
+  end
 end

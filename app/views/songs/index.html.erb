@@ -14,10 +14,12 @@ Songs List
       <td><%= song.title %></td>
       <td><%= song.artist %></td>
       <td><a href='<%= song.url %>'>Listen here</a></td>
-      <td><%= link_to "Edit Song", edit_song_path(song) %></td>
-      <td><%= button_to "Delete Song", song_path(song), method: :delete, data: {confirm: "Are you sure?"} %></td>
+      <td><%= link_to "Edit Song", [:edit, user, song] %></td>
+      <td><%= button_to "Delete Song", [user, song], method: :delete, data: {confirm: "Are you sure?"} %></td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'Add a New Song', new_song_path %>
+<% if session[:user_id] %>
+<%= link_to 'Add a New Song', new_user_song_path(user) %>
+<% end %>
