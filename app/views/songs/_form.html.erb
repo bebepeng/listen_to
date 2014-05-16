@@ -1,11 +1,11 @@
 <%= form_for @song do |f| %>
 
-  <!--<% if @song.errors.present? %>-->
-    <!--<% @song.errors.full_messages.each do |message| %>-->
-      <!--<p><%= message %></p>-->
-      <!--<% end %>-->
-    <!--<br>/\-->
-    <!--<% end %>-->
+  <% if @song.errors.present? %>
+    <% @song.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+    <br>
+  <% end %>
 
   <table>
     <tr>

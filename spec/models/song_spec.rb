@@ -9,7 +9,7 @@ describe Song do
     @other_user = create_other_valid_user
     @other_user.songs.create(:title => 'other song', :artist => 'Julie Andrews', :url => 'http://www.youtube.com/something')
 
-    expect(@user.songs.to_a.map {|song| song.title}).to eq ['Do Re Mi', 'yay']
+    expect(@user.songs.to_a.map { |song| song.title }).to eq ['Do Re Mi', 'yay']
   end
 
   def create_valid_user

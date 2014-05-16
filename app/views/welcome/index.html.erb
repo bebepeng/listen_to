@@ -1,11 +1,14 @@
 <h1>Welcome<% if @user %>, <%= @user.username.capitalize %><% end %>! :D</h1>
 <hr><br>
 
+Listen to What Our Users Listen to.
+<%= link_to 'Click here for more.', songs_path %>
+
 <ul>
   <% @users.each do |user| %>
-    <li><%= user[:username] %>'s page</li>
+    <li>Listen to What <%= user.username %> Listens to.</li>
+    <%= link_to 'Click here for more.', songs_path %>
   <% end %>
 </ul>
 
-<h3>Listen to what Bebe Listens to.</h3>
-<a href="/songs">Click here for more.</a>
+

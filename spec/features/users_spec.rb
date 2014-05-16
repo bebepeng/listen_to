@@ -10,7 +10,7 @@ feature 'Users' do
     fill_in 'Password', :with => 'password'
     click_on 'Register'
 
-    expect(page).to have_content "Bebe's page"
+    expect(page).to have_content "Listen to What Bebe"
     expect(page).to have_content "Welcome, Bebe!"
   end
 
@@ -43,7 +43,7 @@ feature 'Users' do
 
     fill_in 'Username', :with => 'BebePeng'
     click_on 'Save Changes'
-    expect(page).to have_content "BebePeng's page"
+    expect(page).to have_content "Listen to What BebePeng"
   end
 
   scenario 'users can delete their accounts'
