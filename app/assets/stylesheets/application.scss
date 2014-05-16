@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  padding: 20px;
+  padding: 3%;
 }
 
 h1, h2 {
@@ -42,9 +42,16 @@ header img {
   height: 14px;
 }
 
+#content {
+  width: 86%;
+  border: black solid;
+  border-radius: 25px;
+  padding: 7% 7%;
+}
+
 #song_table {
   border-collapse: separate;
-  border: solid #ccc 2px;
+  border: solid black 2px;
   border-radius: 25px;
 
   th {
@@ -56,7 +63,7 @@ header img {
   }
 
   tr:first-child th {
-    border-bottom: solid #ccc 2px;
+    border-bottom: solid black 2px;
   }
 
   tr:last-child td {
@@ -75,4 +82,11 @@ header img {
   td {
     padding: 10px 10px;
   }
+}
+
+input[type="submit"]{
+  background-color: lightgray;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
 }
