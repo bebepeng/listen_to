@@ -6,7 +6,11 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = songs.new
+    if session[:user_id]
+      @song = songs.new
+    else
+      redirect_to user_songs(user)
+    end
   end
 
   def create
@@ -19,7 +23,11 @@ class SongsController < ApplicationController
   end
 
   def edit
-    @song = songs.find(params[:id])
+    if session[:user_id]
+      @song = songs.find(params[:id])
+    else
+      redirect_to user_songs(user)
+    end
   end
 
   def update
@@ -40,7 +48,7 @@ class SongsController < ApplicationController
   private
 
   def songs
-    @_songs ||= Song.all
+    @_songs ||= user.songs
   end
 
   def songs_path
