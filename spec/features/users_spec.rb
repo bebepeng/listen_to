@@ -1,54 +1,70 @@
 require 'spec_helper'
 
-feature 'Users' do
+feature 'User accounts' do
+  feature 'guests' do
+    scenario 'guests can Register' do
+      visit '/'
+      click_on 'Register'
+      fill_in 'Email', :with => 'bebe@email.com'
+      fill_in 'Username', :with => 'Bebe'
+      fill_in 'Password', :with => 'password'
+      click_on 'Register'
 
-  scenario 'users can Register' do
-    visit '/'
-    click_on 'Register'
-    fill_in 'Email', :with => 'bebe@email.com'
-    fill_in 'Username', :with => 'Bebe'
-    fill_in 'Password', :with => 'password'
-    click_on 'Register'
+      expect(page).to have_content "Listen to What Bebe"
+      expect(page).to have_content "Welcome, Bebe!"
+    end
 
-    expect(page).to have_content "Listen to What Bebe"
-    expect(page).to have_content "Welcome, Bebe!"
+    scenario 'guests see errors when they fail to register' do
+      create_valid_user
+
+      visit '/'
+      click_on 'Register'
+      fill_in 'Email', :with => 'bebe@email.com'
+      fill_in 'Username', :with => 'Bebe'
+      fill_in 'Password', :with => 'password'
+      click_on 'Register'
+
+      expect(page).to have_content "Username has already been taken"
+      expect(page).to have_content "Email has already been taken"
+    end
   end
 
-  scenario 'users see errors when they fail' do
-    create_valid_user
+  feature 'users' do
+    before do
+      login
+    end
 
-    visit '/'
-    click_on 'Register'
-    fill_in 'Email', :with => 'bebe@email.com'
-    fill_in 'Username', :with => 'Bebe'
-    fill_in 'Password', :with => 'password'
-    click_on 'Register'
+    scenario 'users cannot register' do
+      expect(page).to have_no_link 'Register'
+      visit new_user_path
+      expect(page).to have_no_button 'Register'
+    end
 
-    expect(page).to have_content "Username has already been taken"
-    expect(page).to have_content "Email has already been taken"
+    scenario 'users can edit themselves' do
+      click_on 'settings'
+      expect(page).to have_content "bebe@email.com"
+      expect(page).to have_content "Bebe"
+      click_on 'Edit Account'
+
+      fill_in 'Username', :with => 'BebePeng'
+      click_on 'Save Changes'
+      expect(page).to have_content "Listen to What BebePeng"
+    end
+
+    scenario 'users can delete their accounts'
   end
+end
 
-  scenario 'users can edit themselves' do
-    create_valid_user
+def create_valid_user
+  User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
+end
 
-    visit '/'
-    click_on 'Log In'
-    fill_in 'Email', :with => 'bebe@email.com'
-    fill_in 'Password', :with => 'password'
-    click_on 'Log In'
-    click_on 'settings'
-    expect(page).to have_content "bebe@email.com"
-    expect(page).to have_content "Bebe"
-    click_on 'Edit Account'
+def login
+  create_valid_user
 
-    fill_in 'Username', :with => 'BebePeng'
-    click_on 'Save Changes'
-    expect(page).to have_content "Listen to What BebePeng"
-  end
-
-  scenario 'users can delete their accounts'
-
-  def create_valid_user
-    User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
-  end
+  visit '/'
+  click_on 'Log In'
+  fill_in 'Email', :with => 'bebe@email.com'
+  fill_in 'Password', :with => 'password'
+  click_on 'Log In'
 end
