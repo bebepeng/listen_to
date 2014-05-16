@@ -1,21 +1,23 @@
 <h1>Edit Your Profile</h1>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.present? %>
-    <% @user.errors.full_messages.each do |message| %>
-      <p><%= message %></p>
+<div id="user_form">
+  <%= form_for @user do |f| %>
+    <% if @user.errors.present? %>
+      <% @user.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+      <br>
     <% end %>
-    <br>
-  <% end %>
 
-  <table>
-    <tr>
-      <td> <%= f.label :username %>:</td>
-      <td><%= f.text_field :username %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= f.submit %></td>
-    </tr>
-  </table>
-<% end %>
+    <table>
+      <tr>
+        <td> <%= f.label :username %>:</td>
+        <td><%= f.text_field :username %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>>
