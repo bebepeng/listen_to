@@ -5,8 +5,10 @@ Songs List
       <td>Title</td>
       <td>Artist</td>
       <td>YouTube URL</td>
-      <td></td>
-      <td></td>
+      <% if session[:user_id] %>
+        <td></td>
+        <td></td>
+      <% end %>
     </tr>
   </th>
   <% @songs.each do |song| %>
@@ -14,8 +16,10 @@ Songs List
       <td><%= song.title %></td>
       <td><%= song.artist %></td>
       <td><a href='<%= song.url %>'>Listen here</a></td>
-      <td><%= link_to "Edit Song", [:edit, user, song] %></td>
-      <td><%= button_to "Delete Song", [user, song], method: :delete, data: {confirm: "Are you sure?"} %></td>
+      <% if session[:user_id] %>
+        <td><%= link_to "Edit Song", [:edit, user, song] %></td>
+        <td><%= button_to "Delete Song", [user, song], method: :delete, data: {confirm: "Are you sure?"} %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

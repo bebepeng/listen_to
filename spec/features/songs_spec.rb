@@ -2,13 +2,34 @@ require 'spec_helper'
 
 feature 'Songs Page' do
   feature 'guest interctions' do
+    before do
+      user = create_valid_user
+      login(user)
+      add_new_song(user)
+      click_on 'Log Out'
+    end
     scenario 'guests cannot add a song' do
-      create_valid_user
       visit '/'
       click_on 'Click here for more.'
       expect(page).to have_no_link 'Add a New Song'
     end
+
+    scenario 'guests cannot edit a song' do
+      visit '/'
+      click_on 'Click here for more.'
+      expect(page).to have_content 'My Heart Will Go On'
+      expect(page).to have_no_link 'Edit Song'
+    end
+
+    scenario 'guests cannot delete a song' do
+      visit '/'
+      click_on 'Click here for more.'
+      expect(page).to have_content 'My Heart Will Go On'
+      expect(page).to have_no_button 'Delete Song'
+    end
   end
+
+
   feature 'signed in user interactions' do
     before do
       @user = create_valid_user
@@ -52,6 +73,7 @@ feature 'Songs Page' do
       expect(page).to_not have_content 'Celine Dion'
     end
   end
+
 
   def have_youtube_link(url)
     have_css("a[href='#{url}']")
