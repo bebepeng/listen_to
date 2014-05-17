@@ -42,26 +42,39 @@ h2 {
   font-size: 200%;
 }
 
-#right_header {
-  text-align: right;
-}
 
 header {
   color: #d4d4d4;
+
+  #left_header {
+    float: left;
+    width: 45%;
+    text-align: left;
+    img {
+      height: 50px;
+    }
+  }
+
+  #right_header {
+    padding-top: 30px;
+    float: right;
+    width: 45%;
+    text-align: right;
+    img {
+      height: 14px;
+    }
+  }
 
   a {
     text-decoration: none;
     color: #2ca3e3;
   }
-
-  img {
-    height: 14px;
-  }
 }
 
 #content {
+  clear: both;
   width: 86%;
-  min-height: 50%;
+  min-height: 65%;
   border: black solid;
   border-radius: 25px;
   padding: 7% 7%;
@@ -88,6 +101,12 @@ header {
   tr:last-child td {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+  }
+}
+
+#user_settings {
+  td {
+    padding: 10px 10px;
   }
 }
 
