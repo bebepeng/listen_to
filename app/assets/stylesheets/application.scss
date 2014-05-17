@@ -16,10 +16,18 @@
 
 html {
   font-family: 'Vollkorn', Georgia, Times, serif;
+  height: 100%;
 }
 
 body {
+  background-image: image_url("congruent_outline.png");
+  height: 100%;
   padding: 3%;
+}
+
+a {
+  text-decoration: none;
+  color: #177eee;
 }
 
 h1, h2 {
@@ -38,15 +46,26 @@ h2 {
   text-align: right;
 }
 
-header img {
-  height: 14px;
+header {
+  color: #d4d4d4;
+
+  a {
+    text-decoration: none;
+    color: #2ca3e3;
+  }
+
+  img {
+    height: 14px;
+  }
 }
 
 #content {
   width: 86%;
+  min-height: 50%;
   border: black solid;
   border-radius: 25px;
   padding: 7% 7%;
+  background-color: #d4d4d4;
 }
 
 #song_table {
@@ -84,9 +103,22 @@ header img {
   }
 }
 
-input[type="submit"]{
-  background-color: lightgray;
+input[type="submit"] {
+  color: #d4d4d4;
+  background-color: #333333;
   border: 1px solid #000;
   box-shadow: 1px 1px 1px #000;
   border-radius: 10px;
+}
+
+input[type=text], input[type=email], input[type=password] {
+  background-color: #c0c0c0;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  padding: 2px 10px;
+}
+
+hr {
+  border: solid black 1px;
 }
