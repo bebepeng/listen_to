@@ -47,7 +47,7 @@ feature 'Songs Page' do
       add_new_song(@user)
       click_on 'Log Out'
 
-      another_user = create_another_valid_user
+      another_user = create_valid_user(:email => 'bob@email.com', :username => 'bob')
       login(another_user)
       add_another_new_song(another_user)
 

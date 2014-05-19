@@ -1,7 +1,11 @@
-def create_valid_user
-  User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
-end
+def create_valid_user(attributes ={})
+  defaults = {
+    :email => 'bebe@email.com',
+    :username => 'Bebe',
+    :password => 'password',
+  }
 
-def create_another_valid_user
-  User.create!(:email => 'bob@email.com', :username => 'Bob', :password => 'password')
+  user = User.new(defaults.merge(attributes))
+  user.save!
+  user
 end
