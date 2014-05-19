@@ -15,7 +15,7 @@ feature 'User accounts' do
     end
 
     scenario 'guests see errors when they fail to register' do
-      create_valid_user
+      create_user
 
       visit '/'
       click_on 'Register'
@@ -31,7 +31,7 @@ feature 'User accounts' do
 
   feature 'users' do
     before do
-      login
+      login(create_user)
     end
 
     scenario 'users cannot register' do
@@ -53,14 +53,4 @@ feature 'User accounts' do
 
     scenario 'users can delete their accounts'
   end
-end
-
-def login
-  create_valid_user
-
-  visit '/'
-  click_on 'Log In'
-  fill_in 'Email', :with => 'bebe@email.com'
-  fill_in 'Password', :with => 'password'
-  click_on 'Log In'
 end

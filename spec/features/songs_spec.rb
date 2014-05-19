@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Songs Page' do
   feature 'guest interctions' do
     before do
-      user = create_valid_user
+      user = create_user
       login(user)
       add_new_song(user)
       click_on 'Log Out'
@@ -32,7 +32,7 @@ feature 'Songs Page' do
 
   feature 'signed in user interactions' do
     before do
-      @user = create_valid_user
+      @user = create_user
       login(@user)
     end
     scenario 'users can add a song' do
@@ -47,7 +47,7 @@ feature 'Songs Page' do
       add_new_song(@user)
       click_on 'Log Out'
 
-      another_user = create_valid_user(:email => 'bob@email.com', :username => 'bob')
+      another_user = create_user(:email => 'bob@email.com', :username => 'bob')
       login(another_user)
       add_another_new_song(another_user)
 
@@ -97,13 +97,5 @@ feature 'Songs Page' do
     fill_in 'Artist', :with => 'Celine Dion'
     fill_in 'YouTube URL', :with => 'https://www.youtube.com/watch?v=DNyKDI9pn0Q'
     click_on 'Create Song'
-  end
-
-  def login(user)
-    visit '/'
-    click_on 'Log In'
-    fill_in 'Email', :with => user.email
-    fill_in 'Password', :with => 'password'
-    click_on 'Log In'
   end
 end

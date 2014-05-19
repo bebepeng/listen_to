@@ -1,4 +1,4 @@
-def create_valid_user(attributes ={})
+def create_user(attributes ={})
   defaults = {
     :email => 'bebe@email.com',
     :username => 'Bebe',
