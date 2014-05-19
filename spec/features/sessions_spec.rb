@@ -53,8 +53,4 @@ feature 'User Sessions' do
     expect(page).to have_no_content "Welcome, Bebe!"
     expect(page).to have_content "Invalid Username or Password"
   end
-
-  def create_valid_user
-    User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
-  end
 end

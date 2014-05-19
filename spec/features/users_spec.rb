@@ -55,10 +55,6 @@ feature 'User accounts' do
   end
 end
 
-def create_valid_user
-  User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
-end
-
 def login
   create_valid_user
 

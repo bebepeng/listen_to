@@ -46,8 +46,4 @@ describe User do
       expect(User.find_by_case_insensitive_email('Bebe@email.com').email).to eq 'bebe@email.com'
     end
   end
-
-  def create_valid_user
-    User.create!(:email => 'bebe@email.com', :username => 'Bebe', :password => 'password')
-  end
 end
