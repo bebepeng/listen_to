@@ -37,6 +37,7 @@ feature 'Songs Page' do
     end
     scenario 'users can add a song' do
       add_new_song(@user)
+      visit user_songs_path(@user)
 
       expect(page).to have_content 'My Heart Will Go On'
       expect(page).to have_content 'Celine Dion'
@@ -57,6 +58,7 @@ feature 'Songs Page' do
 
     scenario 'Users can edit a song' do
       add_new_song(@user)
+      visit user_songs_path(@user)
 
       click_on 'Edit Song'
       fill_in 'Title', :with => 'That Titanic Song'
@@ -67,6 +69,7 @@ feature 'Songs Page' do
 
     scenario 'Users can delete a song' do
       add_new_song(@user)
+      visit user_songs_path(@user)
 
       click_on 'Delete Song'
       expect(page).to_not have_content 'My Heart Will Go On'
@@ -77,16 +80,6 @@ feature 'Songs Page' do
 
   def have_youtube_link(url)
     have_css("a[href='#{url}']")
-  end
-
-  def add_new_song(user)
-    visit user_songs_path(user)
-    click_on 'Add a New Song'
-
-    fill_in 'Title', :with => 'My Heart Will Go On'
-    fill_in 'Artist', :with => 'Celine Dion'
-    fill_in 'YouTube URL', :with => 'https://www.youtube.com/watch?v=DNyKDI9pn0Q'
-    click_on 'Create Song'
   end
 
   def add_another_new_song(user)
