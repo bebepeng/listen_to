@@ -10,7 +10,7 @@ class SongsController < ApplicationController
     if is_owner?(params[:user_id])
       @song = songs.new
     else
-      redirect_to user_songs(user)
+      redirect_to user_songs_path(user)
     end
   end
 
@@ -27,7 +27,7 @@ class SongsController < ApplicationController
     if is_owner?(params[:user_id])
       @song = songs.find(params[:id])
     else
-      redirect_to user_songs(user)
+      redirect_to user_songs_path(user)
     end
   end
 
