@@ -3,6 +3,7 @@ class SongsController < ApplicationController
 
   def index
     @songs = songs
+    @is_an_owner = is_owner?(params[:user_id])
   end
 
   def new

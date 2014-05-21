@@ -4,7 +4,7 @@
       <th>Title</th>
       <th>Artist</th>
       <th>YouTube URL</th>
-      <% if session[:user_id] %>
+      <% if @is_an_owner %>
         <th></th>
         <th></th>
       <% end %>
@@ -14,7 +14,7 @@
       <td><%= song.title %></td>
       <td><%= song.artist %></td>
       <td><a href='<%= song.url %>'>Listen here</a></td>
-      <% if session[:user_id] %>
+      <% if @is_an_owner %>
         <td><%= link_to "Edit Song", [:edit, user, song] %></td>
         <td><%= button_to "Delete Song", [user, song], method: :delete, data: {confirm: "Are you sure?"} %></td>
       <% end %>
@@ -22,6 +22,6 @@
   <% end %>
 </table>
 
-<% if session[:user_id] %>
+<% if @is_an_owner %>
   <%= link_to 'Add a New Song', new_user_song_path(user) %>
 <% end %>

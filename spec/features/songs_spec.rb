@@ -75,6 +75,17 @@ feature 'Songs Page' do
       expect(page).to_not have_content 'My Heart Will Go On'
       expect(page).to_not have_content 'Celine Dion'
     end
+
+    scenario 'Users act as guest on other users pages' do
+      bob = create_user(:email => 'bob@gmail.com', :username => 'bob')
+      add_new_song(bob)
+
+      visit user_songs_path(bob)
+      expect(page).to have_content 'My Heart Will Go On'
+      expect(page).to have_no_link 'Add a New Song'
+      expect(page).to have_no_link 'Edit Song'
+      expect(page).to have_no_button 'Delete Song'
+    end
   end
 
 
