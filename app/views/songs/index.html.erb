@@ -1,14 +1,20 @@
-<h1>Songs List</h1>
+<h1>What
+  <% if @is_an_owner %>
+    You Listen to
+  <% else %>
+    <%= user.username %> Listens to
+  <% end %>
+</h1>
 <table id="song_table">
-    <tr>
-      <th>Title</th>
-      <th>Artist</th>
-      <th>YouTube URL</th>
-      <% if @is_an_owner %>
-        <th></th>
-        <th></th>
-      <% end %>
-    </tr>
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>YouTube URL</th>
+    <% if @is_an_owner %>
+      <th></th>
+      <th></th>
+    <% end %>
+  </tr>
   <% @songs.each do |song| %>
     <tr>
       <td><%= song.title %></td>
