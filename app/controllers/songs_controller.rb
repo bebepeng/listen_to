@@ -7,7 +7,7 @@ class SongsController < ApplicationController
   end
 
   def new
-    if session[:user_id]
+    if is_owner?(params[:user_id])
       @song = songs.new
     else
       redirect_to user_songs(user)
@@ -24,7 +24,7 @@ class SongsController < ApplicationController
   end
 
   def edit
-    if session[:user_id]
+    if is_owner?(params[:user_id])
       @song = songs.find(params[:id])
     else
       redirect_to user_songs(user)
