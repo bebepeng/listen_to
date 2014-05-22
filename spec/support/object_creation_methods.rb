@@ -3,6 +3,7 @@ def create_user(attributes ={})
     :email => 'bebe@email.com',
     :username => 'Bebe',
     :password => 'password',
+    :password_confirmation => 'password'
   }
 
   user = User.new(defaults.merge(attributes))

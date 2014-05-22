@@ -8,6 +8,7 @@ feature 'User accounts' do
       fill_in 'Email', :with => 'bebe@email.com'
       fill_in 'Username', :with => 'Bebe'
       fill_in 'Password', :with => 'password'
+      fill_in 'Password confirmation', :with => 'password'
       click_on 'Register'
 
       expect(page).to have_content "Listen to What Bebe"

@@ -37,6 +37,13 @@ describe User do
 
       expect(user.errors[:password].length).to eq 0
     end
+
+    it 'requires the password and the password_confirmation to match' do
+      user = User.new(:password => 'bebepeng', :password_confirmation => 'bebepen')
+      user.valid?
+
+      expect(user.errors[:password_confirmation].length).to eq 1
+    end
   end
 
   describe 'finder' do
