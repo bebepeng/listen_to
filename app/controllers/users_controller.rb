@@ -18,11 +18,18 @@ class UsersController < ApplicationController
   end
 
   def show
+    owner = User.find(params[:id])
+    @is_an_owner = is_owner?(owner)
     @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(session[:user_id])
+    owner = User.find(params[:id])
+    if is_owner?(owner)
+      @user = User.find(session[:user_id])
+    else
+      redirect_to user_path(params[:id])
+    end
   end
 
   def update

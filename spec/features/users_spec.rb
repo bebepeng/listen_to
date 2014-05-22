@@ -52,5 +52,11 @@ feature 'User accounts' do
     end
 
     scenario 'users can delete their accounts'
+
+    scenario 'users cannot edit other users' do
+      bob = create_user(:username => 'bob', :email => 'bob@email.com')
+      visit user_path(bob)
+      expect(page).to have_no_link 'Edit Account'
+    end
   end
 end
