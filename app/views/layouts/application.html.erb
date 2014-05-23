@@ -19,6 +19,8 @@
       Hi, <%= user.username %>!
       <%= link_to(image_tag(image_path('settings_wrench.png')), user_path(user), :id => 'settings') %>
       &nbsp;
+      <%= link_to 'Home', user_songs_path(user)  %>
+      &nbsp;
       <%= link_to 'Log Out', logout_path %>
     <% elsif current_page?(login_path) || current_page?(new_user_path) %>
     <% else %>

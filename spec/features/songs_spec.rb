@@ -35,6 +35,13 @@ feature 'Songs Page' do
       @user = create_user
       login(@user)
     end
+
+    scenario 'users can visit their songs from the home link in the header' do
+      click_on 'Home'
+
+      expect(page).to have_content 'What You Listen to'
+    end
+
     scenario 'users can add a song' do
       add_new_song(@user)
       visit user_songs_path(@user)
