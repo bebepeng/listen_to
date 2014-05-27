@@ -48,7 +48,7 @@ header {
 
   #left_header {
     float: left;
-    width: 49%;
+    width: 45%;
     text-align: left;
     img {
       height: 50px;
@@ -58,7 +58,7 @@ header {
   #right_header {
     padding-top: 30px;
     float: right;
-    width: 49%;
+    width: 45%;
     text-align: right;
     img {
       height: 14px;
@@ -74,7 +74,7 @@ header {
 #content {
   clear: both;
   width: 86%;
-  height: 60%;
+  min-height: 60%;
   border: black solid;
   border-radius: 25px;
   padding: 7% 7%;
@@ -122,7 +122,7 @@ header {
   }
 }
 
-input[type="submit"] {
+input[type="submit"], button {
   color: #d4d4d4;
   background-color: #333333;
   border: 1px solid #000;

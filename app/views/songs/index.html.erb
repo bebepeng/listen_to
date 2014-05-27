@@ -19,7 +19,25 @@
     <tr>
       <td><%= song.title %></td>
       <td><%= song.artist %></td>
-      <td><a href='<%= song.url %>'>Listen here</a></td>
+      <td>
+        <button class="btn-primary" data-toggle="modal" data-target="#myModal">
+          Listen here
+        </button>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <iframe width="560" height="315" src="//www.youtube.com/embed/<%= song.youtube_id %>" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </td>
       <% if @is_an_owner %>
         <td><%= link_to "Edit Song", [:edit, user, song] %></td>
         <td><%= button_to "Delete Song", [user, song], method: :delete, data: {confirm: "Are you sure?"} %></td>

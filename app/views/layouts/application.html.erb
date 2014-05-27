@@ -7,11 +7,14 @@
   <%= csrf_meta_tags %>
   <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
 <header>
   <div id="left_header">
-    <%=link_to(image_tag("listento_logo_color.png"), root_path)  %>
+    <%= link_to(image_tag("listento_logo_color.png"), root_path) %>
   </div>
   <div id="right_header">
     <% if session[:user_id] %>
@@ -19,7 +22,7 @@
       Hi, <%= user.username %>!
       <%= link_to(image_tag(image_path('settings_wrench.png')), user_path(user), :id => 'settings') %>
       &nbsp;
-      <%= link_to 'Home', user_songs_path(user)  %>
+      <%= link_to 'Home', user_songs_path(user) %>
       &nbsp;
       <%= link_to 'Log Out', logout_path %>
     <% elsif current_page?(login_path) || current_page?(new_user_path) %>

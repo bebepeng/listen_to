@@ -27,6 +27,13 @@ feature 'Songs Page' do
       expect(page).to have_content 'My Heart Will Go On'
       expect(page).to have_no_button 'Delete Song'
     end
+
+    scenario 'guests can view youtube songs' do
+      visit '/'
+      click_on 'Click here for more.'
+      click_on 'Listen here'
+      expect(page).to have_video 'DNyKDI9pn0Q'
+    end
   end
 
 
@@ -48,7 +55,6 @@ feature 'Songs Page' do
 
       expect(page).to have_content 'My Heart Will Go On'
       expect(page).to have_content 'Celine Dion'
-      expect(page).to have_youtube_link 'https://www.youtube.com/watch?v=DNyKDI9pn0Q'
     end
 
     scenario 'only songs associated with a user are displayed' do
@@ -96,8 +102,8 @@ feature 'Songs Page' do
   end
 
 
-  def have_youtube_link(url)
-    have_css("a[href='#{url}']")
+  def have_video(youtube_id)
+    have_css("iframe[src='//www.youtube.com/embed/#{youtube_id}']")
   end
 
   def add_another_new_song(user)
