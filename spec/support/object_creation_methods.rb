@@ -11,7 +11,7 @@ def create_user(attributes ={})
   user
 end
 
-def add_new_song(user)
+def create_song(user)
   defaults = {
     :title => 'My Heart Will Go On',
     :artist => 'Celine Dion',

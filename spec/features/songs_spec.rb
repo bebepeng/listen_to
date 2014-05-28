@@ -5,7 +5,7 @@ feature 'Songs Page' do
     before do
       user = create_user
       login(user)
-      add_new_song(user)
+      create_song(user)
       click_on 'Log Out'
     end
     scenario 'guests cannot add a song' do
@@ -50,15 +50,25 @@ feature 'Songs Page' do
     end
 
     scenario 'users can add a song' do
-      add_new_song(@user)
+      create_song(@user)
       visit user_songs_path(@user)
 
       expect(page).to have_content 'My Heart Will Go On'
       expect(page).to have_content 'Celine Dion'
     end
 
+    scenario 'users see errors when incorrectly filling out form' do
+      visit new_user_song_path(@user)
+      fill_in 'Title', :with => 'The Milky Way'
+      fill_in 'Artist', :with => 'Sungha Jung'
+      fill_in 'YouTube URL', :with => 'https://www.youtube.com/wI-XdM7rIo8'
+      click_on 'Create Song'
+
+      expect(page).to have_content 'YouTube URL is invalid'
+    end
+
     scenario 'only songs associated with a user are displayed' do
-      add_new_song(@user)
+      create_song(@user)
       click_on 'Log Out'
 
       another_user = create_user(:email => 'bob@email.com', :username => 'bob')
@@ -70,7 +80,7 @@ feature 'Songs Page' do
     end
 
     scenario 'Users can edit a song' do
-      add_new_song(@user)
+      create_song(@user)
       visit user_songs_path(@user)
 
       click_on 'Edit Song'
@@ -81,7 +91,7 @@ feature 'Songs Page' do
     end
 
     scenario 'Users can delete a song' do
-      add_new_song(@user)
+      create_song(@user)
       visit user_songs_path(@user)
 
       click_on 'Delete Song'
@@ -90,10 +100,10 @@ feature 'Songs Page' do
     end
 
     scenario 'Users act as guest on other users pages' do
-      bob = create_user(:email => 'bob@gmail.com', :username => 'bob')
-      add_new_song(bob)
+      another_user = create_user(:email => 'bob@gmail.com', :username => 'bob')
+      create_song(another_user)
 
-      visit user_songs_path(bob)
+      visit user_songs_path(another_user)
       expect(page).to have_content 'My Heart Will Go On'
       expect(page).to have_no_link 'Add a New Song'
       expect(page).to have_no_link 'Edit Song'
