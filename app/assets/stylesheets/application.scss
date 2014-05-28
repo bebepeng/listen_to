@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree ./vendor
+ *= require_tree ./modules
  *= require_self
  */
 
@@ -41,7 +42,6 @@ h1 {
 h2 {
   font-size: 200%;
 }
-
 
 header {
   color: #d4d4d4;
