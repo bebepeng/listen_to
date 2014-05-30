@@ -2,11 +2,14 @@
   <%= form_for [user, @song] do |f| %>
 
     <% if @song.errors.present? %>
-      <% @song.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
-      <% end %>
+      <div class="errors">
+        <% @song.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+      </div>
       <br>
     <% end %>
+
 
     <table>
       <tr>

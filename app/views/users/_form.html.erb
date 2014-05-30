@@ -2,9 +2,11 @@
   <%= form_for @user do |f| %>
 
     <% if @user.errors.present? %>
-      <% @user.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
-      <% end %>
+      <div class="errors">
+        <% @user.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+      </div>
       <br>
     <% end %>
 

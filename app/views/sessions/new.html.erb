@@ -3,9 +3,14 @@
 <div id="user_form">
   <%= form_for @user, :url => {:action => 'create'} do |f| %>
 
+
     <% flash.each do |_name, msg| -%>
-      <p><%= msg %></p>
+      <div class="errors">
+        <p><%= msg %></p>
+      </div>
     <% end -%>
+    <br>
+
 
     <table>
       <tr>

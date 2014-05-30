@@ -74,10 +74,10 @@ header {
 #content {
   clear: both;
   width: 100%;
-  min-height: 85%;
+  height: 88%;
   border: black solid;
   border-radius: 25px;
-  padding: 7% 7%;
+  padding: 3% 7%;
   background-color: #d4d4d4;
 }
 
@@ -140,4 +140,14 @@ input[type=text], input[type=email], input[type=password] {
 
 hr {
   border: solid black 1px;
+}
+
+.errors {
+  background-color: #ffb0b5;
+  width: 35%;
+  border-radius: 2em;
+  border: 2px solid #c2070d;
+  text-align: center;
+  padding: .5em;
+  color: #c2070d;
 }
