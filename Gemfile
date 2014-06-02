@@ -41,6 +41,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.2'
   gem 'capybara', '~> 2.2.1'
+  gem 'dotenv-rails', '~> 0.11.1'
 end
 
 gem 'bcrypt', '~> 3.1.7'
@@ -51,4 +52,8 @@ end
 
 group :test do
   gem 'launchy'
+  gem 'vcr', '~> 2.9.0'
+  gem 'webmock', '~> 1.17.4'
 end
+
+gem 'faraday', '~> 0.9.0'
