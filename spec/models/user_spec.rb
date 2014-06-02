@@ -26,6 +26,13 @@ describe User do
       expect(user.errors[:username].length).to eq 1
     end
 
+    it 'cannot have a username with a space in it' do
+      user = User.new(:username => 'bebe peng')
+      user.valid?
+
+      expect(user.errors[:username].length).to eq 1
+    end
+
     it 'requires at lest 8 characters in their password' do
       user = User.new(:password => 'bebepen')
       user.valid?
