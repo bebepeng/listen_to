@@ -13,4 +13,7 @@
 <% if @is_an_owner %>
   <br>
   <%= link_to 'Edit Account', edit_user_path %>
+  <div id="delete_user">
+    <%= button_to 'Delete Account', user_path, method: :delete, data: {confirm: "Are you sure?"} %>
+  </div>
 <% end %>

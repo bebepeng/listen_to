@@ -42,6 +42,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(login_id)
+    if is_owner?(user)
+      user.destroy
+      session[:user_id] = nil
+      redirect_to root_path
+    end
+  end
+
   private
 
   def users

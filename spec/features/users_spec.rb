@@ -52,7 +52,13 @@ feature 'User accounts' do
       expect(page).to have_content "Listen to What BebePeng"
     end
 
-    scenario 'users can delete their accounts'
+    scenario 'users can delete their accounts' do
+      click_on 'settings'
+      click_on 'Delete Account'
+      expect(page).to have_no_content 'Hi, Bebe!'
+      expect(page).to have_content 'Log In'
+      expect(page).to have_no_content 'Listen to What Bebe Listens to.'
+    end
 
     scenario 'users cannot edit other users' do
       bob = create_user(:username => 'bob', :email => 'bob@email.com')

@@ -53,4 +53,15 @@ describe User do
       expect(User.find_by_case_insensitive_email('Bebe@email.com').email).to eq 'bebe@email.com'
     end
   end
+
+  describe 'destroy' do
+    it 'destroys all songs tied to a user when the user is destroyed' do
+      user = create_user
+      create_song(user)
+      user.destroy
+
+      expect(User.find_by(:id => user.id)).to eq nil
+      expect(Song.find_by(:user_id => user.id)).to eq nil
+    end
+  end
 end
