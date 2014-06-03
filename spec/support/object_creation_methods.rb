@@ -11,12 +11,12 @@ def create_user(attributes ={})
   user
 end
 
-def create_song(user)
+def create_song(user, attributes = {})
   defaults = {
     :title => 'My Heart Will Go On',
     :artist => 'Celine Dion',
     :url => 'https://www.youtube.com/watch?v=DNyKDI9pn0Q',
   }
 
-  user.songs.create!(defaults)
+  user.songs.create!(defaults.merge(attributes))
 end

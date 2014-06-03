@@ -3,10 +3,8 @@ require 'spec_helper'
 feature 'Songs Page' do
   feature 'guest interctions' do
     before do
-      user = create_user
-      login(user)
-      create_song(user)
-      click_on 'Log Out'
+      @user = create_user
+      create_song(@user)
     end
     scenario 'guests cannot add a song' do
       visit '/'
@@ -34,12 +32,18 @@ feature 'Songs Page' do
       end
     end
 
-    scenario 'guests can view youtube songs' do
+    scenario 'guests can view youtube songs', js: true do
+      create_song(@user, url: 'https://www.youtube.com/watch?v=SbyAZQ45uww')
       visit '/'
-      VCR.use_cassette('youtube/guest_song') do
+      VCR.use_cassette('youtube/guest_songs') do
         click_on 'Click here for more.'
-        click_on 'Listen here'
-        expect(page).to have_video 'DNyKDI9pn0Q'
+        within "#song_table" do
+          page.all('.btn-primary').last.click
+        end
+
+        within ".modal-dialog", visible: true do
+          expect(page).to have_video 'SbyAZQ45uww'
+        end
       end
     end
   end
@@ -137,7 +141,7 @@ feature 'Songs Page' do
 
 
   def have_video(youtube_id)
-    have_css("iframe[src='//www.youtube.com/embed/#{youtube_id}']")
+    have_css("iframe[src='//www.youtube.com/embed/#{youtube_id}']", visible: true)
   end
 
   def add_another_new_song(user)

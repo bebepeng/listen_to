@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=DNyKDI9pn0Q&key=<YOUTUBE_KEY>&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Tue, 03 Jun 2014 17:01:54 GMT
+      Date:
+      - Tue, 03 Jun 2014 17:01:54 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"bvxF-DWHx1toJotsdJBeCm43SLs/tpCcMysofp3vATZoaBvajEFG12Y"'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '483'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#videoListResponse",
+         "etag": "\"bvxF-DWHx1toJotsdJBeCm43SLs/tpCcMysofp3vATZoaBvajEFG12Y\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 1
+         },
+         "items": [
+          {
+           "kind": "youtube#video",
+           "etag": "\"bvxF-DWHx1toJotsdJBeCm43SLs/In2iirV9FWZ4_--6Y3XkapzdbOY\"",
+           "id": "DNyKDI9pn0Q",
+           "statistics": {
+            "viewCount": "4099567",
+            "likeCount": "17795",
+            "dislikeCount": "565",
+            "favoriteCount": "0",
+            "commentCount": "1294"
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Tue, 03 Jun 2014 17:01:53 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=SbyAZQ45uww&key=<YOUTUBE_KEY>&part=statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Tue, 03 Jun 2014 17:01:54 GMT
+      Date:
+      - Tue, 03 Jun 2014 17:01:54 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"bvxF-DWHx1toJotsdJBeCm43SLs/Fp0MiDPwzxs8WbrRI9krFsLlt_Y"'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '487'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#videoListResponse",
+         "etag": "\"bvxF-DWHx1toJotsdJBeCm43SLs/Fp0MiDPwzxs8WbrRI9krFsLlt_Y\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 1
+         },
+         "items": [
+          {
+           "kind": "youtube#video",
+           "etag": "\"bvxF-DWHx1toJotsdJBeCm43SLs/mYD70AM_qTEb4vzHYtmj3dUL9gw\"",
+           "id": "SbyAZQ45uww",
+           "statistics": {
+            "viewCount": "26224447",
+            "likeCount": "105797",
+            "dislikeCount": "1616",
+            "favoriteCount": "0",
+            "commentCount": "14047"
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Tue, 03 Jun 2014 17:01:53 GMT
+recorded_with: VCR 2.9.0

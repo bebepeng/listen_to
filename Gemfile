@@ -42,6 +42,8 @@ group :test, :development do
   gem 'rspec-rails', '~> 2.14.2'
   gem 'capybara', '~> 2.2.1'
   gem 'dotenv-rails', '~> 0.11.1'
+  gem 'selenium-webdriver', '~> 2.42.0'
+  gem 'database_cleaner', '~> 1.3.0'
 end
 
 gem 'bcrypt', '~> 3.1.7'
