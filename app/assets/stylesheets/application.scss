@@ -83,10 +83,11 @@ header {
 }
 
 #song_table, #stats_table {
+  margin: 0 auto;
   border-collapse: separate;
   border: solid black 2px;
   border-radius: 25px;
-  width: 70%;
+  width: 100%;
 
   th {
     font-size: 120%;
@@ -109,7 +110,7 @@ header {
 #stats_table {
   background-image: linear-gradient(to bottom, #428bca 0, #2d6ca2 150%);
   td:first-child {
-    width: 45%%;
+    width: 50%%;
     text-align: right;
   }
 }
@@ -168,5 +169,7 @@ hr {
 }
 
 #main {
-  margin: auto;
+  width: 70%;
+  margin: 0 auto;
+
 }
