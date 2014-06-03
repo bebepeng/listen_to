@@ -15,6 +15,9 @@ deploy:
   on:
     repo: bebepeng/listen_to
   run:
-      - "bundle exec rake db:migrate"
+  - bundle exec rake db:migrate
 notifications:
   email: false
+env:
+  global:
+    secure: Y6OBYldneT9VvAcaV6L9KaLzDdbLiiDf03y72y9Xz+BZAIEVb97dmaNzl1jWDCZfaQbhkaAgOJfmyp1gT45o76NSC5GrOC688Hm7rilO+/nMi+mn51uEGedk2DNHPZEedpmQRl7sKVEnezuhh02130t0gq0kUJTqUOFLBUX/fTQ=
