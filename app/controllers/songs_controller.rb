@@ -4,6 +4,9 @@ class SongsController < ApplicationController
   def index
     @songs = songs
     @is_an_owner = is_owner?(params[:user_id])
+    view_counts = Song.all_view_counts(user)
+    @song_titles = view_counts.map{|song| song[:title]}
+    @song_counts = view_counts.map{|song| song[:count]}
   end
 
   def new

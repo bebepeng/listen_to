@@ -10,29 +10,37 @@ feature 'Songs Page' do
     end
     scenario 'guests cannot add a song' do
       visit '/'
-      click_on 'Click here for more.'
-      expect(page).to have_no_link 'Add a New Song'
+      VCR.use_cassette('youtube/guest_song') do
+        click_on 'Click here for more.'
+        expect(page).to have_no_link 'Add a New Song'
+      end
     end
 
     scenario 'guests cannot edit a song' do
       visit '/'
-      click_on 'Click here for more.'
-      expect(page).to have_content 'My Heart Will Go On'
-      expect(page).to have_no_link 'Edit Song'
+      VCR.use_cassette('youtube/guest_song') do
+        click_on 'Click here for more.'
+        expect(page).to have_content 'My Heart Will Go On'
+        expect(page).to have_no_link 'Edit Song'
+      end
     end
 
     scenario 'guests cannot delete a song' do
       visit '/'
-      click_on 'Click here for more.'
-      expect(page).to have_content 'My Heart Will Go On'
-      expect(page).to have_no_button 'Delete Song'
+      VCR.use_cassette('youtube/guest_song') do
+        click_on 'Click here for more.'
+        expect(page).to have_content 'My Heart Will Go On'
+        expect(page).to have_no_button 'Delete Song'
+      end
     end
 
     scenario 'guests can view youtube songs' do
       visit '/'
-      click_on 'Click here for more.'
-      click_on 'Listen here'
-      expect(page).to have_video 'DNyKDI9pn0Q'
+      VCR.use_cassette('youtube/guest_song') do
+        click_on 'Click here for more.'
+        click_on 'Listen here'
+        expect(page).to have_video 'DNyKDI9pn0Q'
+      end
     end
   end
 
@@ -42,7 +50,6 @@ feature 'Songs Page' do
       @user = create_user
       login(@user)
     end
-
     scenario 'users can visit their songs from the home link in the header' do
       click_on 'Home'
 
@@ -51,10 +58,12 @@ feature 'Songs Page' do
 
     scenario 'users can add a song' do
       create_song(@user)
-      visit user_songs_path(@user)
+      VCR.use_cassette('youtube/create_song') do
+        visit user_songs_path(@user)
 
-      expect(page).to have_content 'My Heart Will Go On'
-      expect(page).to have_content 'Celine Dion'
+        expect(page).to have_content 'My Heart Will Go On'
+        expect(page).to have_content 'Celine Dion'
+      end
     end
 
     scenario 'users see errors when incorrectly filling out form' do
@@ -73,41 +82,56 @@ feature 'Songs Page' do
 
       another_user = create_user(:email => 'bob@email.com', :username => 'bob')
       login(another_user)
-      add_another_new_song(another_user)
+      VCR.use_cassette('youtube/another_users_song') do
+        add_another_new_song(another_user)
 
-      expect(page).to have_content 'Titanic Song'
-      expect(page).to have_no_content 'My Heart Will Go On'
+        expect(page).to have_content 'Titanic Song'
+        expect(page).to have_no_content 'My Heart Will Go On'
+      end
     end
 
     scenario 'Users can edit a song' do
       create_song(@user)
-      visit user_songs_path(@user)
+      VCR.use_cassette('youtube/edit_song') do
 
-      click_on 'Edit Song'
+        visit user_songs_path(@user)
+
+        click_on 'Edit Song'
+      end
       fill_in 'Title', :with => 'That Titanic Song'
-      click_on 'Update Song'
+      VCR.use_cassette('youtube/after_edit_song') do
 
-      expect(page).to have_content 'That Titanic Song'
+        click_on 'Update Song'
+
+        expect(page).to have_content 'That Titanic Song'
+      end
     end
 
     scenario 'Users can delete a song' do
       create_song(@user)
-      visit user_songs_path(@user)
+      VCR.use_cassette('youtube/delete_song') do
+        visit user_songs_path(@user)
+      end
 
-      click_on 'Delete Song'
-      expect(page).to_not have_content 'My Heart Will Go On'
-      expect(page).to_not have_content 'Celine Dion'
+      VCR.use_cassette('youtube/after_delete_song') do
+        click_on 'Delete Song'
+        expect(page).to_not have_content 'My Heart Will Go On'
+        expect(page).to_not have_content 'Celine Dion'
+      end
     end
 
     scenario 'Users act as guest on other users pages' do
       another_user = create_user(:email => 'bob@gmail.com', :username => 'bob')
       create_song(another_user)
 
-      visit user_songs_path(another_user)
-      expect(page).to have_content 'My Heart Will Go On'
-      expect(page).to have_no_link 'Add a New Song'
-      expect(page).to have_no_link 'Edit Song'
-      expect(page).to have_no_button 'Delete Song'
+      VCR.use_cassette('youtube/another_users_songs') do
+        visit user_songs_path(another_user)
+
+        expect(page).to have_content 'My Heart Will Go On'
+        expect(page).to have_no_link 'Add a New Song'
+        expect(page).to have_no_link 'Edit Song'
+        expect(page).to have_no_button 'Delete Song'
+      end
     end
   end
 
@@ -117,8 +141,7 @@ feature 'Songs Page' do
   end
 
   def add_another_new_song(user)
-    visit user_songs_path(user)
-    click_on 'Add a New Song'
+    visit new_user_song_path(user)
 
     fill_in 'Title', :with => 'Titanic Song'
     fill_in 'Artist', :with => 'Celine Dion'
@@ -126,3 +149,4 @@ feature 'Songs Page' do
     click_on 'Create Song'
   end
 end
+

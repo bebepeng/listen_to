@@ -50,3 +50,59 @@
 <% if @is_an_owner %>
   <%= link_to 'Add a New Song', new_user_song_path(user) %>
 <% end %>
+
+<hr><br>
+
+<script type="text/javascript" charset="utf-8">
+
+  $(function () {
+    $('#view-count-chart').highcharts({
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'Youtube Videos by View Count'
+      },
+      subtitle: {
+        text: 'Source: Youtube.com'
+      },
+      xAxis: {
+        categories: <%= raw @song_titles %>,
+        title: {
+          text: 'Song Title'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'View Count (views)',
+          align: 'high'
+        },
+        labels: {
+          overflow: 'justify'
+        }
+      },
+      tooltip: {
+        valueSuffix: ' views'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      credits: {
+        enabled: false
+      },
+      series: [
+        {
+          showInLegend: false,
+          data: <%= @song_counts %>
+        }
+      ]
+    });
+  });
+</script>
+
+<div id="view-count-chart"></div>
