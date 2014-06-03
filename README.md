@@ -12,15 +12,20 @@ Some statistics it gives you now:
 * View counts
 * Like counts
 * Favorite counts
+* Average View Counts
+* Average Likability Rating
 
 Future statistics:
 ------
 * Music publication time line
+* Map of publication locations
+* Likability Rating for individual songs
 
 
 
 Look forward to:
 --------
+* User's current favorite song in stream form
 * thumbnails from album art
 * Youtube account connection
 * upload playlists from Youtube
