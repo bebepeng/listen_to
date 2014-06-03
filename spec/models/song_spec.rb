@@ -35,13 +35,13 @@ describe Song do
     expect(invalid_song.errors[:url].length).to eq 1
   end
 
-  it 'find all the view counts associated with a users videos' do
+  it 'finds all the viewer statistics associated with a users videos' do
     @user.songs.create(:title => 'Say Something[Cover]', :artist => 'Pentatonix', :url => 'https://www.youtube.com/watch?v=0dYlvdLdK9w')
     @user.songs.create(:title => 'Sunset In Paris', :artist => 'Sungha Jung', :url => 'http://youtu.be/RPlj673A7H0')
 
     VCR.use_cassette('youtube/songs') do
-      expect(Song.all_view_counts(@user)).to match_array [{:title=>"Say Something[Cover]", :youtube_id=>"0dYlvdLdK9w", :count=>18661338},
-                                                          {:title=>"Sunset In Paris", :youtube_id=>"RPlj673A7H0", :count=>64604}]
+      expect(Song.all_viewer_counts(@user)).to match_array [{:title=>"Say Something[Cover]", :youtube_id=>"0dYlvdLdK9w", :views=>18661338, :favorites=>0},
+                                                          {:title=>"Sunset In Paris", :youtube_id=>"RPlj673A7H0", :views=>64604, :favorites=>0}]
     end
   end
 end

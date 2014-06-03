@@ -61,7 +61,7 @@
         type: 'bar'
       },
       title: {
-        text: 'Youtube Videos by View Count'
+        text: 'Youtube Videos by Viewer Statistics'
       },
       subtitle: {
         text: 'Source: Youtube.com'
@@ -75,7 +75,7 @@
       yAxis: {
         min: 0,
         title: {
-          text: 'View Count (views)',
+          text: 'Viewer Statistics (viewers)',
           align: 'high'
         },
         labels: {
@@ -83,7 +83,7 @@
         }
       },
       tooltip: {
-        valueSuffix: ' views'
+        valueSuffix: ' viewers'
       },
       plotOptions: {
         bar: {
@@ -97,8 +97,12 @@
       },
       series: [
         {
-          showInLegend: false,
-          data: <%= @song_counts %>
+          name: 'total views',
+          data: <%= @song_views %>
+        },
+        {
+          name: 'favorites',
+          data: <%= @song_favorites %>
         }
       ]
     });

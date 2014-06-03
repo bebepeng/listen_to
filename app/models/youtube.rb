@@ -2,20 +2,25 @@ require 'faraday'
 require 'json'
 
 class Youtube
-  attr_reader :token
+  attr_reader :token, :id, :statistics
 
-  def initialize(token)
+  def initialize(token, id)
     @token = token
+    @id = id
+    @statistics = api_call('statistics')['items'].first['statistics']
   end
 
-  def view_count(id)
-    statistics = api_call(id, 'statistics')['items'].first['statistics']
+  def views
     statistics['viewCount'].to_i
+  end
+
+  def favorites
+    statistics['favoriteCount'].to_i
   end
 
   private
 
-  def api_call(id, part)
+  def api_call(part)
     response = Faraday.get("https://www.googleapis.com/youtube/v3/videos?id=#{id}&key=#{token}&part=#{part}")
     JSON.parse(response.body)
   end
