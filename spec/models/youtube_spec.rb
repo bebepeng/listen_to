@@ -6,6 +6,7 @@ describe Youtube do
       youtube = Youtube.new(ENV['YOUTUBE_API_KEY'], '-zQxHBr2NPg')
       expect(youtube.views).to eq 217
       expect(youtube.favorites).to eq 0
+      expect(youtube.likes).to eq 6
     end
   end
 end

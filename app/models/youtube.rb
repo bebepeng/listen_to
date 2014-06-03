@@ -18,6 +18,10 @@ class Youtube
     statistics['favoriteCount'].to_i
   end
 
+  def likes
+    statistics['likeCount'].to_i
+  end
+
   private
 
   def api_call(part)
