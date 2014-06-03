@@ -18,6 +18,7 @@ Setup Instructions
 1. `bundle`
 1. Create databases: `rake db:create`
 1. Run migrations: `rake db:migrate`
+1. Create a .env file using .env.example as a guide
 1. Run Specs `rspec`
 1. Run Local Server `rails s`
 
