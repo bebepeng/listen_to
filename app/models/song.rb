@@ -10,7 +10,7 @@ class Song < ActiveRecord::Base
   def self.all_viewer_counts(user)
     user.songs.map do |song|
       youtube = Youtube.new(ENV['YOUTUBE_API_KEY'], song.youtube_id)
-      {:title => song.title, :youtube_id => song.youtube_id, :views => youtube.views, :favorites => youtube.favorites, :likes => youtube.likes}
+      {:title => song.title, :youtube_id => song.youtube_id, :views => youtube.views, :favorites => youtube.favorites, :likes => youtube.likes, :dislikes => youtube.dislikes}
     end
   end
 end

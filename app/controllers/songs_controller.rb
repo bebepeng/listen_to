@@ -4,10 +4,12 @@ class SongsController < ApplicationController
   def index
     @songs = songs
     @is_an_owner = is_owner?(params[:user_id])
-    view_counts = Song.all_viewer_counts(user)
-    @song_titles = view_counts.map { |song| song[:title] }
-    @song_views = view_counts.map { |song| song[:views] }
-    @song_likes = view_counts.map { |song| song[:likes] }
+    stats = StatCompiler.new(user)
+    @song_titles = stats.all_titles
+    @song_views = stats.all_views
+    @song_likes = stats.all_likes
+    @avg_likeratio = stats.avg_likeratio
+    @avg_views = stats.avg_views
   end
 
   def new

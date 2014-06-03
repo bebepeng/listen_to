@@ -7,6 +7,7 @@ describe Youtube do
       expect(youtube.views).to eq 217
       expect(youtube.favorites).to eq 0
       expect(youtube.likes).to eq 6
+      expect(youtube.dislikes).to eq 0
     end
   end
 end

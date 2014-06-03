@@ -40,8 +40,8 @@ describe Song do
     @user.songs.create(:title => 'Sunset In Paris', :artist => 'Sungha Jung', :url => 'http://youtu.be/RPlj673A7H0')
 
     VCR.use_cassette('youtube/songs') do
-      expect(Song.all_viewer_counts(@user)).to match_array [{:title => "Say Something[Cover]", :youtube_id => "0dYlvdLdK9w", :views => 18661338, :favorites => 0, :likes => 292382},
-                                                            {:title => "Sunset In Paris", :youtube_id => "RPlj673A7H0", :views => 64604, :favorites => 0, :likes => 4169}]
+      expect(Song.all_viewer_counts(@user)).to match_array [{:title => "Say Something[Cover]", :youtube_id => "0dYlvdLdK9w", :views => 18661338, :favorites => 0, :likes => 292382, :dislikes => 4225},
+                                                            {:title => "Sunset In Paris", :youtube_id => "RPlj673A7H0", :views => 64604, :favorites => 0, :likes => 4169, :dislikes => 25}]
     end
   end
-end
+ end

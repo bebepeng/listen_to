@@ -5,51 +5,71 @@
     <%= user.username %> Listens to
   <% end %>
 </h1>
-<table id="song_table">
-  <tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>YouTube URL</th>
-    <% if @is_an_owner %>
-      <th></th>
-      <th></th>
-    <% end %>
-  </tr>
-  <% @songs.each do |song| %>
-    <tr>
-      <td><%= song.title %></td>
-      <td><%= song.artist %></td>
-      <td>
-        <button class="btn-primary" data-toggle="modal" data-target="#myModal<%= song.id %>">
-          Listen here
-        </button>
+<div id="main">
+  <div id="songlist">
+    <table id="song_table">
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>YouTube URL</th>
+        <% if @is_an_owner %>
+          <th></th>
+          <th></th>
+        <% end %>
+      </tr>
+      <% @songs.each do |song| %>
+        <tr>
+          <td><%= song.title %></td>
+          <td><%= song.artist %></td>
+          <td>
+            <button class="btn-primary" data-toggle="modal" data-target="#myModal<%= song.id %>">
+              Listen here
+            </button>
 
-        <div class="modal fade" id="myModal<%= song.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div class="modal-body">
-                <iframe width="560" height="315" src="//www.youtube.com/embed/<%= song.youtube_id %>" frameborder="0" allowfullscreen></iframe>
+            <div class="modal fade" id="myModal<%= song.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="560" height="315" src="//www.youtube.com/embed/<%= song.youtube_id %>" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-      </td>
-      <% if @is_an_owner %>
-        <td><%= link_to "Edit Song", [:edit, user, song] %></td>
-        <td><%= button_to "Delete Song", [user, song], method: :delete, data: {confirm: "Are you sure?"} %></td>
+          </td>
+          <% if @is_an_owner %>
+            <td><%= link_to "Edit Song", [:edit, user, song] %></td>
+            <td><%= button_to "Delete Song", [user, song], method: :delete, data: {confirm: "Are you sure?"} %></td>
+          <% end %>
+        </tr>
       <% end %>
-    </tr>
-  <% end %>
-</table>
+    </table>
+  </div>
 
-<br>
-<% if @is_an_owner %>
-  <%= link_to 'Add a New Song', new_user_song_path(user) %>
-<% end %>
+  <% if @avg_views %>
+    <div id="statslist">
+      <table id="stats_table">
+        <tr>
+          <td>Average Views for Playlist</td>
+          <td><%= number_with_delimiter(@avg_views, :delimiter => ',') %></td>
+        </tr>
+        <tr>
+          <td>Average Like to All Ratings Ratio</td>
+          <td><%= '%.2f' % @avg_likeratio %></td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+
+
+  <br>
+  <% if @is_an_owner %>
+    <%= link_to 'Add a New Song', new_user_song_path(user) %>
+  <% end %>
+</div>
 
 <hr><br>
 

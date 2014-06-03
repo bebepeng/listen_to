@@ -22,6 +22,10 @@ class Youtube
     statistics['likeCount'].to_i
   end
 
+  def dislikes
+    statistics['dislikeCount'].to_i
+  end
+
   private
 
   def api_call(part)
