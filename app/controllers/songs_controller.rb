@@ -7,7 +7,6 @@ class SongsController < ApplicationController
     view_counts = Song.all_viewer_counts(user)
     @song_titles = view_counts.map { |song| song[:title] }
     @song_views = view_counts.map { |song| song[:views] }
-    @song_favorites = view_counts.map { |song| song[:favorites] }
     @song_likes = view_counts.map { |song| song[:likes] }
   end
 
