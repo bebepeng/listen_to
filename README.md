@@ -1,6 +1,32 @@
 Listen to - RAILS
 ======================================
-Listen to what Bebe listens to! This is an app that displays music that I enjoy listening to
+A quantitative way of sharing with people what you enjoy listening to.
+
+Users add youtube songs they enjoy to their lists.
+Listen to then compiles statistics about those songs, to give you some insight on your or someone else's preferences.
+
+<hr>
+
+Some statistics it gives you now:
+----------
+* View counts
+* Like counts
+* Favorite counts
+
+Future statistics:
+------
+* Music publication time line
+
+
+
+Look forward to:
+--------
+* thumbnails from album art
+* Youtube account connection
+* upload playlists from Youtube
+* sharing via Facebook and Twitter
+
+<hr>
 
 [![Code Climate](https://codeclimate.com/github/bebepeng/listen_to.png)](https://codeclimate.com/github/bebepeng/listen_to)
 [![Build Status](https://travis-ci.org/bebepeng/listen_to.svg?branch=master)](https://travis-ci.org/bebepeng/listen_to)
