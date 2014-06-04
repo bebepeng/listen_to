@@ -26,6 +26,7 @@ Future statistics:
 Look forward to:
 --------
 * User's current favorite song in stream form
+* Search playlists for a certain song
 * thumbnails from album art
 * Youtube account connection
 * upload playlists from Youtube
