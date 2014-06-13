@@ -59,3 +59,4 @@ group :test do
 end
 
 gem 'faraday', '~> 0.9.0'
+gem 'ejs', '~> 1.1.1'
