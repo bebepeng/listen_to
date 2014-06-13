@@ -73,59 +73,9 @@
 
 <hr><br>
 
-<script type="text/javascript" charset="utf-8">
-
-  $(function () {
-    $('#view-count-chart').highcharts({
-      chart: {
-        type: 'bar'
-      },
-      title: {
-        text: 'Youtube Videos by Viewer Statistics'
-      },
-      subtitle: {
-        text: 'Source: Youtube.com'
-      },
-      xAxis: {
-        categories: <%= raw @song_titles %>,
-        title: {
-          text: 'Song Title'
-        }
-      },
-      yAxis: {
-        min: 0,
-        title: {
-          text: 'Viewer Statistics (viewers)',
-          align: 'high'
-        },
-        labels: {
-          overflow: 'justify'
-        }
-      },
-      tooltip: {
-        valueSuffix: ' viewers'
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            enabled: true
-          }
-        }
-      },
-      credits: {
-        enabled: false
-      },
-      series: [
-        {
-          name: 'likes',
-          data: <%= @song_likes %>
-        },
-        {
-          name: 'total views',
-          data: <%= @song_views %>
-        }
-      ]
-    });
+<script>
+  $(document).ready(function () {
+    viewchart(<%= raw @song_titles %>, <%= @song_likes %>, <%= @song_views %>);
   });
 </script>
 

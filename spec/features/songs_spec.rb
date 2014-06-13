@@ -46,6 +46,17 @@ feature 'Songs Page' do
         end
       end
     end
+
+    scenario 'guests can view charts about the video', js: true do
+      create_song(@user, url: 'https://www.youtube.com/watch?v=SbyAZQ45uww')
+      visit '/'
+      VCR.use_cassette('youtube/guest_songs') do
+        click_on 'Click here for more.'
+        within "#view-count-chart" do
+          expect(page).to have_chart
+        end
+      end
+    end
   end
 
 
@@ -142,6 +153,10 @@ feature 'Songs Page' do
 
   def have_video(youtube_id)
     have_css("iframe[src='//www.youtube.com/embed/#{youtube_id}']", visible: true)
+  end
+
+  def have_chart
+    have_css("div.highcharts-container")
   end
 
   def add_another_new_song(user)
