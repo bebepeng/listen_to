@@ -22,23 +22,9 @@
           <td><%= song.title %></td>
           <td><%= song.artist %></td>
           <td>
-            <button class="btn-primary" data-toggle="modal" data-target="#myModal<%= song.id %>">
+            <button class="btn-primary" data-attribute="button" data-id="<%= song.youtube_id %>">
               Listen here
             </button>
-
-            <div class="modal fade" id="myModal<%= song.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  </div>
-                  <div class="modal-body">
-                    <iframe width="560" height="315" src="//www.youtube.com/embed/<%= song.youtube_id %>" frameborder="0" allowfullscreen></iframe>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </td>
           <% if @is_an_owner %>
             <td><%= link_to "Edit Song", [:edit, user, song] %></td>
@@ -76,6 +62,7 @@
 <script>
   $(document).ready(function () {
     viewchart(<%= raw @song_titles %>, <%= @song_likes %>, <%= @song_views %>);
+    Modal.initialize();
   });
 </script>
 

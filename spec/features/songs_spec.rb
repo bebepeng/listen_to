@@ -41,7 +41,7 @@ feature 'Songs Page' do
           page.all('.btn-primary').last.click
         end
 
-        within ".modal-dialog", visible: true do
+        within ".modalDialog", visible: true do
           expect(page).to have_video 'SbyAZQ45uww'
         end
       end
